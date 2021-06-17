@@ -4,6 +4,7 @@ from tkinter import messagebox
 import rsaidnumber
 from playsound import playsound
 from datetime import date, datetime, timedelta
+import re
 
 now = datetime.now()
 
@@ -54,6 +55,10 @@ entry2.place(x=440, y=75, width=180, height=30)
 entry3 = Entry(root, state="normal", bg="white")
 entry3.place(x=100, y=155, width=180, height=30)
 
+
+
+
+
 entry4 = Entry(root, state="normal", bg="white")
 entry4.place(x=440, y=155, width=180, height=30)
 
@@ -81,18 +86,6 @@ def check():
         age = 18 - age
         messagebox.showerror("Warning", "You are too young to play. Please try again in " + str(age) + " years")
 
-
-
-
-
-
-
-
-
-
-
-
-
 def erase():
     entry1.delete(0, "end")
     entry2.delete(0, "end")
@@ -100,10 +93,8 @@ def erase():
     entry4.delete(0, "end")
     identry.delte(0,"end")
 
-
 clear_button = Button(root, text="Clear", width=20, bg="yellow", command=erase)
 clear_button.place(x=100, y=300)
-
 
 def exit():
     playsound("sound_effect.mp3")

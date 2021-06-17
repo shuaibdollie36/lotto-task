@@ -8,7 +8,7 @@ from datetime import date, datetime, timedelta
 
 
 root = Tk()
-root.title("Lotto Machine")
+root.title("Lotto Machine: Thunderball")
 root.geometry("750x400")
 root.config(bg="purple")
 
@@ -27,14 +27,13 @@ num5 = Spinbox(num_label, from_=1, to=49, width=2,bg="purple",fg="white",font=("
 num5.place(x=490, y=10)
 num6 = Spinbox(num_label, from_=1, to=49, width=2,bg="purple",fg="white",font=("Arial",20))
 num6.place(x=590, y=10)
-results = Label(root, text="Results:", bg="yellow",font=("Arial",10),width=10)
+results = Label(root, text="Results:", bg="yellow",font=("Arial",12),width=10)
 results.place(x=100, y=150, width=400)
-
-lot = sample(range(1,49),6)
 
 
 def play():
     try:
+        lot = sample(range(1, 49), 6)
         user_numbers = [int(num1.get()), int(num2.get()), int(num3.get()), int(num4.get()), int(num5.get()),
                         int(num6.get())]
         print(user_numbers)
@@ -43,38 +42,38 @@ def play():
         print(len(s))
 
         if len(s) == 0:
-            results.config(text="your numbers were: " + str(user_numbers) + "\n" +
-                                "the winning numbers are: " +
+            results.config(text="Your numbers were: " + str(user_numbers) + "\n" +
+                                "The winning numbers are: " +
                                 str(lot) + "\n" + "Sorry today is not your day" + "\n" + str(date.today()))
         if len(s) == 1:
-            results.config(text="your numbers were: " + str(user_numbers) + "\n" +
-                                "the winning numbers are: " +
+            results.config(text="Your numbers were: " + str(user_numbers) + "\n" +
+                                "The winning numbers are: " +
                                 str(lot) + "\n" + "Sorry today is not your day " + "\n" + str(date.today()))
 
         if len(s) == 2:
             results.config(text="your numbers were: " + str(user_numbers) + "\n" +
-                                "the winning numbers are: " +
+                                "The winning numbers are: " +
                                 str(lot) + "\n" + "you won R 20.00" + "\n" + str(date.today()))
 
         if len(s) == 3:
             results.config(text="your numbers were: " + str(user_numbers) + "\n" +
-                                "the winning numbers are: " +
+                                "The winning numbers are: " +
                                 str(lot) + "\n" + "you won R 100.00" + "\n" + str(date.today()))
 
         if len(s) == 4:
             results.config(
-                text="your numbers were: " + str(user_numbers) + "\n" + "the winning numbers are: " +
-                     str(lot) + "\n" + "you won R 2384.00" + "\n" + str(date.today()))
+                text="Your numbers were: " + str(user_numbers) + "\n" + "The winning numbers are: " +
+                     str(lot) + "\n" + "You won R 2384.00" + "\n" + str(date.today()))
 
         if len(s) == 5:
             results.config(
-                text="your numbers were: " + str(user_numbers) + "\n" +
-                     "the winning numbers are: " +
-                     str(lot) + "\n" + "R 8584.00!!!!" + "\n" + str(date.today()))
+                text="Your numbers were: " + str(user_numbers) + "\n" +
+                     "The winning numbers are: " +
+                     str(lot) + "\n" + "R 8584.00" + "\n" + str(date.today()))
 
         if len(s) == 6:
             results.config(
-                text="your numbers were: " + str(user_numbers) + "\n" + "the winning numbers are: " +
+                text="Your numbers were: " + str(user_numbers) + "\n" + "The winning numbers are: " +
                      str(lot) + "\n" + "You won the jackpot: R 10 000 000.00" + "\n" + str(date.today()))
     finally:
         play_button["text"] = "PLAY AGAIN"
@@ -91,6 +90,21 @@ def prize_button():
     if msg == "no":
         root.destroy()
         import main4
+
+
+def erase():
+    num1.delete(0, "end")
+    num2 .delete(0, "end")
+    num3.delete(0, "end")
+    num4.delete(0, "end")
+    num5.delete(0, "end")
+    num6.delete(0, "end")
+
+
+clear_button = Button(root, text="Clear", width=20, bg="yellow", command=erase)
+clear_button.place(x=500, y=250)
+
+
 
 prize_button = Button(root, text="Claim prize", width=20, bg="yellow",command=prize_button)
 prize_button.place(x=100, y=300)
