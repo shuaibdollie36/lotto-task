@@ -51,9 +51,9 @@ def play():
                                 str(lot) + "\n" + "Sorry today is not your day " + "\n" + str(date.today()))
 
         if len(s) == 2:
-            results.config(text="your numbers were: " + str(user_numbers) + "\n" +
+            results.config(text="Your numbers were: " + str(user_numbers) + "\n" +
                                 "The winning numbers are: " +
-                                str(lot) + "\n" + "you won R 20.00" + "\n" + str(date.today()))
+                                str(lot) + "\n" + "You won R 20.00" + "\n" + str(date.today()))
 
         if len(s) == 3:
             results.config(text="your numbers were: " + str(user_numbers) + "\n" +
@@ -85,7 +85,7 @@ def nextscreen():
     import main4
 
 def prize_button():
-    playsound("fast.mp3")
+    playsound("winner.mp3")
     msg = messagebox.askquestion("Really", "Play Again?")
     if msg == "no":
         root.destroy()

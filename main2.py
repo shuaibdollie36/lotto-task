@@ -5,7 +5,7 @@ import rsaidnumber
 from playsound import playsound
 from datetime import date, datetime, timedelta
 import re
-
+import email_validator
 now = datetime.now()
 
 root = Tk()

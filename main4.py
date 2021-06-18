@@ -60,6 +60,18 @@ entry5.place(x=400, y=120, width=180, height=30)
 accept_button = Button(root, text="Accept", width=20, bg="yellow", command=submit)
 accept_button.place(x=500, y=300)
 
+
+def currency_button():
+    msg = messagebox.askquestion("Winnings","Would you like to convert your winnings")
+    if msg == "yes":
+        root.destroy()
+        import main5
+
+
+currency_button = Button(root, text="Currency Converter", width=20, bg="yellow", command=currency_button)
+currency_button.place(x=500, y=230)
+
+
 def erase():
     entry7.delete(0, "end")
     entry5.delete(0,"end")
