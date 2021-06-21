@@ -6,6 +6,11 @@ from playsound import playsound
 from datetime import date, datetime, timedelta
 import re
 import email_validator
+from email import encoders
+from email.mime.base import MIMEBase
+import smtplib
+
+
 now = datetime.now()
 
 root = Tk()
@@ -14,12 +19,43 @@ root.geometry("750x400")
 root.config(bg="purple")
 
 def check():
+    player_id = identry.get()
+    year = player_id[:2]
+    if year >= "22":
+        year = "19" + year
+    else:
+        year = "20" + year
+    month = player_id[2:4]
+    day = player_id[4:6]
+    today = date.today()
+
+    age = today.year - int(year) - ((today.month, today.day) < (int(month), int(day)))
 
     w = open("Details.txt", "a+")
     w.write(
-        entry1.get() + " " + " " + entry2.get() + " " + " " + entry3.get() + " " + " " + entry4.get()+ " " + " " + "Logged into App at:" + " " + " " + str(
+        entry1.get() + " " + " " + entry2.get() + " " + " " + entry3.get() + " " + " " + identry.get()+ " " + " " + "Logged into App at:" + " " + " " + str(
             now) + "\n")
     w.close()
+
+    try:
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        sender = "shuaibdollie36@gmail.com"
+        receiver = [entry3.get()]
+        password = "bladedollie"
+        s.starttls()
+        s.login(sender, password)
+        message = str(entry1.get()) + " " + str(entry2.get()) + " " + str(entry3.get())
+        message = message + " " + str(identry.get())
+        s.sendmail(sender, receiver, message)
+        filename = "Details.txt"
+        with open(filename, "rb") as attachment:
+            part = MIMEBase("application", "octet-stream")
+            part.set_payload(attachment.read())
+        encoders.encode_base64(part)
+        part.add_header("Your details were recorded", f"attachment; filename = {filename}")
+        print("email sent")
+    except email_validator.EmailNotValidError:
+        messagebox.showerror("Notification","Please check email")
 
     if int(entry4.get()) < 18:
         messagebox.showerror(message="You are too young to play")
@@ -47,6 +83,7 @@ label4.place(x=440, y=120)
 label1.place(x=100, y=40)
 label2.place(x=440, y=40)
 
+#Entries & placement
 entry1 = Entry(root, state="normal", bg="white")
 entry1.place(x=100, y=75, width=180, height=30)
 entry2 = Entry(root, state="normal", bg="white")
@@ -63,7 +100,7 @@ entry4 = Entry(root, state="normal", bg="white")
 entry4.place(x=440, y=155, width=180, height=30)
 
 
-def check():
+def check1():
     player_id = identry.get()
     year = player_id[:2]
     if year >= "22":

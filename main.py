@@ -12,10 +12,12 @@ root.title("Lotto Machine: Thunderball")
 root.geometry("750x400")
 root.config(bg="purple")
 
+#insert image for front page
 image1 = ImageTk.PhotoImage(Image.open("lolo.png"))
 image_label = Label(image=image1,bg='purple',pady=45,padx=45)
 image_label.place(x=240,y=50)
 
+#next page click button & code
 class Intel:
     def __init__(self, root):
         self.next_button = Button(root, text="Click to Play", width=20, bg="yellow", command=self.nextscreen)

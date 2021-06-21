@@ -91,7 +91,6 @@ def prize_button():
         root.destroy()
         import main4
 
-
 def erase():
     num1.delete(0, "end")
     num2 .delete(0, "end")
@@ -105,10 +104,8 @@ clear_button = Button(root, text="Clear", width=20, bg="yellow", command=erase)
 clear_button.place(x=500, y=250)
 
 
-
 prize_button = Button(root, text="Claim prize", width=20, bg="yellow",command=prize_button)
 prize_button.place(x=100, y=300)
-
 
 
 exit_button = Button(root, text="Exit", width=20, bg="yellow",command=exit)
