@@ -8,7 +8,9 @@ from datetime import date,datetime
 
 
 root = Tk()
+#
 root.title("Lotto Machine: Thunderball")
+#window size
 root.geometry("750x400")
 root.config(bg="purple")
 
@@ -29,4 +31,5 @@ class Intel:
 
 
 obj = Intel(root)
+#close
 root.mainloop()

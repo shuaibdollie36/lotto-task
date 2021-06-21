@@ -12,7 +12,7 @@ root.title("Lotto Machine: Thunderball")
 root.geometry("750x400")
 root.config(bg="purple")
 
-
+#spinbox
 num_label = LabelFrame(root, text="Enter your numbers", width=700, height=80, bg="yellow",font=("Arial",20))
 num_label.place(x=25, y=40)
 num1 = Spinbox(num_label, from_=1, to=49 , width=2,bg="purple",fg="white",font=("Arial",20))
@@ -99,7 +99,7 @@ def erase():
     num5.delete(0, "end")
     num6.delete(0, "end")
 
-
+#buttons
 clear_button = Button(root, text="Clear", width=20, bg="yellow", command=erase)
 clear_button.place(x=500, y=250)
 
